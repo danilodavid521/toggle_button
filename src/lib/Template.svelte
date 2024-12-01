@@ -24,10 +24,6 @@
 
     window.addEventListener('click', closeMenu);
     return () => window.removeEventListener('click', closeMenu);
-
-    return () => {
-      window.removeEventListener('resize', checkNavigation);
-    };
   });
 
   let isOpen = false;
