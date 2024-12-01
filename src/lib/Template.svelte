@@ -28,9 +28,15 @@
   });
 
   let isOpen = false;
+  let isOpen_2 = false;
+
 
   async function toggleMenu() {
     isOpen = !isOpen;
+  }
+
+  async function toggleMenu_2() {
+    isOpen_2 = !isOpen_2;
   }
 
   async function closeMenu(event) {
@@ -106,7 +112,7 @@
             <div class="flex">
               <div class="-ml-2 mr-2 flex items-center md:hidden">
                 <!-- Mobile menu button -->
-                <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                <button type="button" on:click={toggleMenu_2} class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
                   <span class="absolute -inset-0.5"></span>
                   <span class="sr-only">Open main menu</span>
                   <!--
@@ -127,7 +133,7 @@
                 </button>
               </div>
 
-              <div class="hidden md:ml-6 md:flex md:space-x-8">
+              <div class="hidden md:ml-6 md:flex md:space-x-8 ">
                 <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
                 <a href="#" class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">Dashboard</a>
                 <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
@@ -155,6 +161,7 @@
 
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="md:hidden" id="mobile-menu">
+        {#if isOpen_2}
           <div class="space-y-1 pb-3 pt-2">
             <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
             <a href="#" class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700 sm:pl-5 sm:pr-6">Dashboard</a>
@@ -162,7 +169,7 @@
             <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6">Projects</a>
             <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6">Calendar</a>
           </div>
-
+          {/if}
         </div>
       </nav>
 
