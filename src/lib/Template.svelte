@@ -22,6 +22,9 @@
     checkNavigation();
     window.addEventListener('resize', checkNavigation);
 
+    window.addEventListener('click', closeMenu);
+    return () => window.removeEventListener('click', closeMenu);
+
     return () => {
       window.removeEventListener('resize', checkNavigation);
     };
@@ -31,11 +34,11 @@
   let isOpen_2 = false;
 
 
-  async function toggleMenu() {
+  async function toggleProfileMenu() {
     isOpen = !isOpen;
   }
 
-  async function toggleMenu_2() {
+  async function toggleSubMenu() {
     isOpen_2 = !isOpen_2;
   }
 
@@ -43,11 +46,6 @@
     if (event.target.closest('.menu-container')) return;
     isOpen = false;
   }
-
-  onMount(() => {
-    window.addEventListener('click', closeMenu);
-    return () => window.removeEventListener('click', closeMenu);
-  });
 
 </script>
 
@@ -84,7 +82,7 @@
             <!-- Profile dropdown -->
 
             <div class="relative menu-container">
-              <button type="button" class="-m-1.5 flex items-center p-1.5" on:click={toggleMenu}>
+              <button type="button" class="-m-1.5 flex items-center p-1.5" on:click={toggleProfileMenu}>
                 <span class="sr-only">Open user menu</span>
                 <img class="size-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                 <span class="hidden lg:flex lg:items-center">
@@ -112,7 +110,7 @@
             <div class="flex">
               <div class="-ml-2 mr-2 flex items-center md:hidden">
                 <!-- Mobile menu button -->
-                <button type="button" on:click={toggleMenu_2} class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                <button type="button" on:click={toggleSubMenu} class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
                   <span class="absolute -inset-0.5"></span>
                   <span class="sr-only">Open main menu</span>
                   <!--
